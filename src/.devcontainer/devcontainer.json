@@ -43,7 +43,6 @@
       },
     "runArgs": [
         "-e", "DISPLAY=${env:DISPLAY}",
-        "--gpus=all"
     ],
     "mounts": [
         "source=${localWorkspaceFolder}/../cache/humble/build,target=/home/Jakub/ros2_ws/build,type=bind",
