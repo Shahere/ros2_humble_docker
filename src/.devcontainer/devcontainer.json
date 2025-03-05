@@ -1,15 +1,15 @@
 {
     "name": "ROS 2 Development Container",
     "privileged": true,
-    "remoteUser": "Jakub",
+    "remoteUser": "savinien",
     "build": {
         "dockerfile": "Dockerfile",
         "args": {
-            "USERNAME": "Jakub"
+            "USERNAME": "savinien"
         }
     },
-    "workspaceFolder": "/home/Jakub/ros2_ws",
-    "workspaceMount": "source=${localWorkspaceFolder},target=/home/Jakub/ros2_ws/src,type=bind",
+    "workspaceFolder": "/home/savinien",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/savinien/ros2_ws/src,type=bind",
     "customizations": {
         "vscode": {
             "extensions":[
@@ -39,14 +39,15 @@
     },
     "runArgs": [
         "-e", "DISPLAY=${env:DISPLAY}",
-        "--net=host",
+        "--net=host"
     ],
     "mounts": [
         "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
         "source=/dev/dri,target=/dev/dri,type=bind,consistency=cached",
-        "source=${localWorkspaceFolder}/../cache/humble/build,target=/home/Jakub/ros2_ws/build,type=bind",
-        "source=${localWorkspaceFolder}/../cache/humble/install,target=/home/Jakub/ros2_ws/install,type=bind",
-        "source=${localWorkspaceFolder}/../cache/humble/log,target=/home/Jakub/ros2_ws/log,type=bind"
+        "source=${localWorkspaceFolder}/../cache/humble/build,target=/home/savinien/ros2_ws/build,type=bind",
+        "source=${localWorkspaceFolder}/../cache/humble/install,target=/home/savinien/ros2_ws/install,type=bind",
+        "source=${localWorkspaceFolder}/../cache/humble/log,target=/home/savinien/ros2_ws/log,type=bind",
+        "source=/home/savinien/Documents/Polonie,target=/home/savinien/Polonie,type=bind"
     ],
-    "postCreateCommand": "sudo rosdep update && sudo rosdep install --from-paths src --ignore-src -y && sudo chown -R Jakub /home/Jakub/ros2_ws/"
+    "postCreateCommand": "cd /home/savinien/ros2_ws && sudo rosdep update && sudo rosdep install --from-paths src --ignore-src -y && sudo chown -R savinien /home/savinien/ros2_ws/ && echo '\nsource /opt/ros/humble/setup.bash\nsource /home/savinien/fastlio/install/setup.bash\nsource /home/savinien/ws_livox/install/setup.bash' >> ~/.bashrc && . /home/savinien/.bashrc"
 }
